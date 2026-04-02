@@ -1,0 +1,7 @@
+index=security_logs sourcetype=linux_secure "Failed password"
+| rex "^(?<log_time>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| eval Timestamp = strftime(strptime(log_time, "%Y-%m-%dT%H:%M:%S"), "%Y-%m-%d %H:%M:%S")
+| table Timestamp, src_ip
+| rename src_ip as "Source IP"
+| head 20

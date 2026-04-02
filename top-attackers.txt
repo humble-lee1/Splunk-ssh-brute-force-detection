@@ -1,0 +1,4 @@
+index=security_logs sourcetype=linux_secure "Failed password"
+| stats count by host
+| rename host as "Source IP"
+| sort - count

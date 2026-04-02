@@ -1,0 +1,2 @@
+index=security_logs sourcetype=linux_secure "Failed password"
+| timechart count
