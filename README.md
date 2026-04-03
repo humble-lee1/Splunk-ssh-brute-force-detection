@@ -86,6 +86,13 @@ index=security_logs sourcetype=linux_secure "Failed password"
 | rename src_ip as "Source IP"
 | head 20
 
+## 🔎 Investigation Summary
+
+During analysis, multiple failed SSH login attempts were detected from IP address 192.168.122.109.
+The attacker attempted over 15 login attempts within a short time window, indicating a brute force attack.
+No successful login was observed, suggesting the attack was unsuccessful but persistent.
+This behavior matches typical automated password guessing attacks.
+
 ### Project Structure
 ├── README.md                 # Project overview
 ├── screenshots/              # All dashboard screenshots
