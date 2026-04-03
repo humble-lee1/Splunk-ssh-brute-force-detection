@@ -73,8 +73,9 @@ index=security_logs sourcetype=linux_secure "Failed password"
 ### Top Attackers Identification
 ```spl
 index=security_logs sourcetype=linux_secure "Failed password"
-| stats count by host
-| rename host as "Source IP"
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+| sort -count
 
 ### Detailed Attack Table
 ```spl
